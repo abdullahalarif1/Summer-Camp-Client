@@ -1,4 +1,5 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -30,8 +31,22 @@ const Register = () => {
                 type="text"
                 placeholder="name"
                 name="name"
-                {...register("name")}
-                required
+                {...register("name", { required: true })}
+                className="input input-bordered bg-black"
+              />
+              {errors.name && (
+                <small className="text-error">Name field is required</small>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-white">PhotoURL</span>
+              </label>
+              <input
+                type="photoURL"
+                placeholder="photoURL"
+                name="PhotoURL"
+                {...register("PhotoURL")}
                 className="input input-bordered bg-black"
               />
             </div>
@@ -42,11 +57,13 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                {...register("email")}
-                required
+                {...register("email", { required: true })}
                 placeholder="email"
                 className="input input-bordered bg-black"
               />
+              {errors.email && (
+                <small className="text-error">Email field is required</small>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -54,11 +71,35 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                {...register("password")}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\w\s]).*$/,
+                })}
                 name="password"
                 placeholder="password"
                 className="input input-bordered bg-black"
               />
+              {errors.password?.type === "required" && (
+                <small className="text-error pt-1">
+                  Password field is required
+                </small>
+              )}
+              {errors.password?.type === "minLength" && (
+                <small className="text-error pt-1">Password must be 6 character</small>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <small className="text-error pt-1">
+                  Password must be less than 20 characters
+                </small>
+              )}
+              {errors.password?.type === "pattern" && (
+                <small className="text-error pt-1">
+                  password must have one uppercase, one lowercase, one number
+                  and one special characters.
+                </small>
+              )}
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-outline btn-primary text-white">
