@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../assets/logo-removebg-preview.png'
+import logo from "../assets/logo-removebg-preview.png";
+import useAuth from "../componenets/useAuth";
 
 const Header = () => {
+  const { user } = useAuth();
   const items = (
     <>
       <li>
@@ -58,14 +60,35 @@ const Header = () => {
             {items}
           </ul>
         </div>
-        <a className=""><img className="h-16 " src={logo} alt="" /></a>
+        <a className="">
+          <img className="h-16 " src={logo} alt="" />
+        </a>
       </div>
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end md:pe-12">
-        <a className="btn">Button</a>
+        {user ? (
+          <>
+            {isHovered && <span>{user.displayName}</span>}
+            <label
+              tabIndex={0}
+              className="btn ms-3 btn-ghost btn-circle avatar"
+            >
+              <div
+                className="w-20  border rounded-full"
+                onMouseEnter={() => setIsHovered(true)}
+              >
+                <img src={user.photoURL} />
+              </div>
+            </label>
+          </>
+        ) : (
+          <Link to="/login" className="btn btn-outline btn-primary">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
