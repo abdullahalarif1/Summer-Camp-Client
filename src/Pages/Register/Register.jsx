@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Routes/AuthProvider";
+import useAuth from "../../componenets/useAuth";
+import Swal from "sweetalert2";
+import Google from "../../Layouts/Google";
 
 const Register = () => {
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      // update profile
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile updated");
+          reset();
+          Swal.fire({
+            title: "User Updated successful",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        })
+        .catch((error) => console.log(error.message));
+    });
+  };
   return (
     <div className="hero min-h-screen text-white p-12 py-20 bg-black">
       <div className="hero-content flex-col lg:flex-row">
@@ -45,8 +73,8 @@ const Register = () => {
               <input
                 type="photoURL"
                 placeholder="photoURL"
-                name="PhotoURL"
-                {...register("PhotoURL")}
+                name="photoURL"
+                {...register("photoURL")}
                 className="input input-bordered bg-black"
               />
             </div>
@@ -87,7 +115,9 @@ const Register = () => {
                 </small>
               )}
               {errors.password?.type === "minLength" && (
-                <small className="text-error pt-1">Password must be 6 character</small>
+                <small className="text-error pt-1">
+                  Password must be 6 character
+                </small>
               )}
               {errors.password?.type === "maxLength" && (
                 <small className="text-error pt-1">
@@ -115,6 +145,7 @@ const Register = () => {
               </span>
             </div>
           </form>
+          <Google></Google>
         </div>
       </div>
     </div>

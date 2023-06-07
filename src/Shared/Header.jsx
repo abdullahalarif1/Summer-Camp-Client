@@ -1,10 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo-removebg-preview.png";
 import useAuth from "../componenets/useAuth";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut().then(() => {
+      navigate("/login");
+    });
+  };
+
   const items = (
     <>
       <li>
@@ -24,11 +33,11 @@ const Header = () => {
       </>
 
       <li>
-        {/* {user ? ( */}
-        {/* <Link onClick={}>Logout</Link> */}
-        {/* ) : ( */}
-        <Link to="/login">Login</Link>
-        {/* )} */}
+        {user ? (
+          <Link onClick={handleLogOut}>Logout</Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
     </>
   );
@@ -73,6 +82,7 @@ const Header = () => {
           <>
             {isHovered && <span>{user.displayName}</span>}
             <label
+              title={user.displayName}
               tabIndex={0}
               className="btn ms-3 btn-ghost btn-circle avatar"
             >
