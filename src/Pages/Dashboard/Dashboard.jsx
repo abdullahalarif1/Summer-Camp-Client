@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SiGoogleclassroom } from "react-icons/si";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import { BsBuildingAdd } from "react-icons/bs";
+import { MdClass } from "react-icons/md";
 import { FaWallet, FaUsers, FaHome, FaChalkboardTeacher } from "react-icons/fa";
 import useAdmin from "../../componenets/useAdminInstructor";
 import useInstructor from "../../componenets/useInstructor";
@@ -15,14 +17,14 @@ const Dashboard = () => {
 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-
+  
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label
           htmlFor="my-drawer-2"
-          className="drawer-button btn btn-error btn-outline btn-lg border-2 me-auto lg:hidden sticky top-0  mt-2 "
+          className="drawer-button btn btn-error bg-red-200 btn-lg border-2 me-auto lg:hidden sticky top-0  mt-2 "
         >
           <AiOutlineMenuFold />
         </label>
@@ -50,10 +52,10 @@ const Dashboard = () => {
           ) : isInstructor ? (
             <>
               <li>
-                <NavLink to="/addClass">Add a Class</NavLink>
+                <NavLink to="/dashboard/addClass"> <BsBuildingAdd></BsBuildingAdd> Add a Class</NavLink>
               </li>
               <li>
-                <NavLink to="/myClass">My Classes</NavLink>
+                <NavLink to="/myClass"><MdClass></MdClass> My Classes</NavLink>
               </li>
             </>
           ) : (
