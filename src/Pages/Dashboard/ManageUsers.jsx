@@ -5,10 +5,19 @@ import useAuth from "../../componenets/useAuth";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-  const {} = useAuth();
-  const { data: students = [], refetch } = useQuery(["students"], async () => {
-    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
-    return res.data;
+  const { loading } = useAuth();
+  //   const { data: students = [], refetch } = useQuery(["students"], async () => {
+  //     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
+  //     return res.data;
+  //   });
+
+  const { data: students = [], refetch } = useQuery({
+    enabled: !loading,
+    queryKey: ["students"],
+    queryFn: async () => {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
+      return res.data;
+    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -25,10 +34,11 @@ const ManageUsers = () => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title:  `User Successfully become an ${role}`,
+        title: `User Successfully become an ${role}`,
         showConfirmButton: false,
         timer: 1500,
       });
+       window.location.reload();
     }
   };
 
@@ -60,7 +70,7 @@ const ManageUsers = () => {
                 <button
                   className="btn-error btn text-white"
                   onClick={() => updateUserRole(student._id, "instructor")}
-                  disabled={student.role === "instructor"}
+                  disabled={student.role === "instructor" || isLoading}
                 >
                   Make Instructor
                 </button>
@@ -69,7 +79,7 @@ const ManageUsers = () => {
                 <button
                   className="btn-error btn text-white"
                   onClick={() => updateUserRole(student._id, "admin")}
-                  disabled={student.role === "admin"}
+                  disabled={student.role === "admin" || isLoading}
                 >
                   Make Admin
                 </button>

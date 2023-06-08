@@ -2,17 +2,19 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SiGoogleclassroom } from "react-icons/si";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import {
-  FaWallet,
-  FaUsers,
-  FaHome,
-  FaChalkboardTeacher,
-} from "react-icons/fa";
+import { FaWallet, FaUsers, FaHome, FaChalkboardTeacher } from "react-icons/fa";
+import useAdmin from "../../componenets/useAdminInstructor";
+import useInstructor from "../../componenets/useInstructor";
+
 
 const Dashboard = () => {
+  
   // TODO
-  const isAdmin = true;
-  const isInstructor = true;
+  // const isAdmin = true;
+  // const isInstructor = true;
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -20,7 +22,7 @@ const Dashboard = () => {
       <div className="drawer-content">
         <label
           htmlFor="my-drawer-2"
-          className="drawer-button btn btn-error btn-outline btn-lg border-2 me-auto lg:hidden fixed mt-2 right-4"
+          className="drawer-button btn btn-error btn-outline btn-lg border-2 me-auto lg:hidden sticky top-0  mt-2 "
         >
           <AiOutlineMenuFold />
         </label>
