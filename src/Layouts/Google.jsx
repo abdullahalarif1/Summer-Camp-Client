@@ -3,6 +3,7 @@ import useAuth from "../componenets/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Google = () => {
+  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const { googleSignIn } = useAuth();
   const handleGoogleSignIn = () => {
@@ -10,12 +11,22 @@ const Google = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/");
+
+        // data base save
+        const savedStudent = { name: user.displayName, email: user.email };
+        fetch(`${import.meta.env.VITE_BASE_URL}/students`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedStudent),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            navigate(from, { replace: true });
+          });
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+     
   };
   return (
     <>

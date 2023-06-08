@@ -27,9 +27,11 @@ const Header = () => {
         <li>
           <Link to="/classes">Classes</Link>
         </li>
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+        {user && (
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        )}
       </>
 
       <li>

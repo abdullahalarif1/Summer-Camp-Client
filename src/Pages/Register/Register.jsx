@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../Routes/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../componenets/useAuth";
 import Swal from "sweetalert2";
 import Google from "../../Layouts/Google";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
   const {
     register,
@@ -24,17 +24,31 @@ const Register = () => {
       // update profile
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile updated");
-          reset();
-          Swal.fire({
-            title: "User Updated successful",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
+          const savedStudent = { name: data.name, email: data.email };
+          fetch(`${import.meta.env.VITE_BASE_URL}/students`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
             },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
-          });
+            body: JSON.stringify(savedStudent),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  title: "User Updated successful",
+                  showClass: {
+                    popup: "animate__animated animate__fadeInDown",
+                  },
+                  hideClass: {
+                    popup: "animate__animated animate__fadeOutUp",
+                  },
+                });
+                navigate("/");
+              }
+            });
         })
         .catch((error) => console.log(error.message));
     });
