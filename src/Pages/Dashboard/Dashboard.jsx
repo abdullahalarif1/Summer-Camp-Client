@@ -1,6 +1,13 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { SiGoogleclassroom } from "react-icons/si";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import {
+  FaWallet,
+  FaUsers,
+  FaHome,
+  FaChalkboardTeacher,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   // TODO
@@ -27,10 +34,15 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/manageUsers">Manage Users</NavLink>
+                <NavLink to="/dashboard/manageUsers">
+                  {" "}
+                  <FaUsers></FaUsers> Manage Users
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageClasses">Manage Classes</NavLink>
+                <NavLink to="/dashboard/manageClasses">
+                  <FaWallet></FaWallet> Manage Classes
+                </NavLink>
               </li>
             </>
           ) : isInstructor ? (
@@ -56,13 +68,19 @@ const Dashboard = () => {
 
           <div className="divider"></div>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">
+              <FaHome></FaHome>Home{" "}
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/instructors">Instructors</NavLink>
+            <NavLink to="/instructors">
+              <FaChalkboardTeacher></FaChalkboardTeacher>Instructors
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/classes">Classes</NavLink>
+            <NavLink to="/classes">
+              <SiGoogleclassroom></SiGoogleclassroom>Classes
+            </NavLink>
           </li>
         </ul>
       </div>
@@ -71,4 +89,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
