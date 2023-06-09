@@ -60,6 +60,10 @@ const router = createBrowserRouter([
         path: "myClasses",
         element: <MyClasses></MyClasses>,
       },
+      {
+        path: "feedback",
+        element: ,
+      },
     ],
   },
 ]);

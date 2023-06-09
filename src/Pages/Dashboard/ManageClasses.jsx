@@ -4,8 +4,7 @@ import axios from "axios";
 
 const ManageClasses = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
-  const [feedbackText, setFeedbackText] = useState("");
+
 
   const updateUserStatus = async (userId, status) => {
     setIsLoading(true);
@@ -46,7 +45,7 @@ const ManageClasses = () => {
             <p>Price: ${myClass.price}</p>
             <p>Status: {myClass.status}</p>
             <div className="card-actions justify-end">
-              <div
+              <button
                 onClick={() => updateUserStatus(myClass._id, "approved")}
                 disabled={
                   myClass.status === "approved" || myClass.status === "denied"
@@ -54,8 +53,8 @@ const ManageClasses = () => {
                 className="btn btn-outline text-white"
               >
                 Approve
-              </div>
-              <div
+              </button>
+              <button
                 onClick={() => updateUserStatus(myClass._id, "denied")}
                 disabled={
                   myClass.status === "approved" || myClass.status === "denied"
@@ -63,8 +62,8 @@ const ManageClasses = () => {
                 className="btn btn-outline text-white"
               >
                 Deny
-              </div>
-              <div className="btn btn-outline text-white">Send Feedback</div>
+              </button>
+              <button className="btn btn-outline  text-white">Send Feedback</button>
             </div>
           </div>
         </div>

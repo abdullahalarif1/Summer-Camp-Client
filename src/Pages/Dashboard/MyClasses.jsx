@@ -25,7 +25,11 @@ const MyClasses = () => {
                   <td>{myClass.className}</td>
                   <td>{myClass.enrolledStudents}</td>
                   <td>{myClass.status}</td>
-                  <td><button className='btn btn-outline text-white'>Feedback</button></td>
+                  <td>
+                    <small>
+                      {myClass.status === "denied" && myClass.className}
+                    </small>{" "}
+                  </td>
                 </tr>
               ))}
             </tbody>

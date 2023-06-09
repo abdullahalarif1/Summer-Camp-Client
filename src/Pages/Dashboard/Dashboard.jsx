@@ -31,7 +31,7 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side   bg-gradient-to-r from-black to-[#06213d]">
           <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-          <ul className="menu p-4 w-80 h-full bg-black  border-r text-white">
+          <ul className="menu p-4 w-80 h-full from-black to-[#06213d]  border-r text-white">
             {/* Sidebar content here */}
 
             {isAdmin ? (
