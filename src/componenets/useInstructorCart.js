@@ -5,7 +5,7 @@ const useInstructorCart = () => {
     const { isLoading, refetch, data: instructors = [] } = useQuery({
         queryKey: ['instructorData'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/instructors`)
+            const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/instructor`)
             return res.data
         }
     })

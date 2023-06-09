@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import useClasses from "../../componenets/useClasses";
+import axios from "axios";
 
 const ManageClasses = () => {
-  const [classes] = useClasses();
+  const [isLoading, setIsLoading] = useState(false);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackText, setFeedbackText] = useState("");
+
+  const updateUserStatus = async (userId, status) => {
+    setIsLoading(true);
+    const res = await axios.patch(
+      `${import.meta.env.VITE_BASE_URL}/instructors/approveDeny/${userId}`,
+      { status }
+    );
+
+    if (res.data.modifiedCount) {
+      refetch();
+    }
+  };
+
+  const [classes, refetch] = useClasses();
   console.log(classes);
   return (
     <div>
@@ -29,17 +46,28 @@ const ManageClasses = () => {
             <p>Price: ${myClass.price}</p>
             <p>Status: {myClass.status}</p>
             <div className="card-actions justify-end">
-              <div className="btn btn-outline text-white">Approve</div>
-              <div className="btn btn-outline text-white">Deny</div>
+              <div
+                onClick={() => updateUserStatus(myClass._id, "approved")}
+                disabled={
+                  myClass.status === "approved" || myClass.status === "denied"
+                }
+                className="btn btn-outline text-white"
+              >
+                Approve
+              </div>
+              <div
+                onClick={() => updateUserStatus(myClass._id, "denied")}
+                disabled={
+                  myClass.status === "approved" || myClass.status === "denied"
+                }
+                className="btn btn-outline text-white"
+              >
+                Deny
+              </div>
+              <div className="btn btn-outline text-white">Send Feedback</div>
             </div>
           </div>
         </div>
-
-        /* <td>{myClass.className}</td>
-                  <td>{myClass.instructorName}</td>
-                  <td>{myClass.instructorEmail}</td>
-                  <td>{myClass.availableSeats}</td>
-                  <td>{myClass.price}</td> */
       ))}
     </div>
   );
