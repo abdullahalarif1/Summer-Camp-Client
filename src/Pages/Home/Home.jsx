@@ -4,10 +4,10 @@ import Instructors from './Instructors';
 
 const Home = () => {
     return (
-        <div className='bg-black'>
-           <Banner></Banner>
-           <Instructors></Instructors>
-        </div>
+      <div className="bg-gradient-to-r from-black to-[#06213d]">
+        <Banner></Banner>
+        <Instructors></Instructors>
+      </div>
     );
 };
 

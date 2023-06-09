@@ -3,9 +3,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import useAuth from "../../componenets/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../componenets/useAxiosSecure";
 
 const ManageUsers = () => {
   const { loading } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
   //   const { data: students = [], refetch } = useQuery(["students"], async () => {
   //     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
   //     return res.data;
@@ -15,7 +17,7 @@ const ManageUsers = () => {
     enabled: !loading,
     queryKey: ["students"],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students/`);
       return res.data;
     },
   });
@@ -38,15 +40,18 @@ const ManageUsers = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-       window.location.reload();
+      //   window.location.reload();
     }
   };
 
   return (
     <div className="overflow-x-auto p-20">
+      <h2 className="text-4xl text-center pb-10 font-thin ">
+        Manage <span className="text-red-500"> Classes</span>
+      </h2>
       <table className="table">
         <thead>
-          <tr>
+          <tr className="text-white">
             <th></th>
             <th>Email</th>
             <th>Role</th>
@@ -70,7 +75,7 @@ const ManageUsers = () => {
                 <button
                   className="btn-error btn text-white"
                   onClick={() => updateUserRole(student._id, "instructor")}
-                  disabled={student.role === "instructor" || isLoading}
+                  disabled={student.role === "instructor"}
                 >
                   Make Instructor
                 </button>
@@ -79,7 +84,7 @@ const ManageUsers = () => {
                 <button
                   className="btn-error btn text-white"
                   onClick={() => updateUserRole(student._id, "admin")}
-                  disabled={student.role === "admin" || isLoading}
+                  disabled={student.role === "admin"}
                 >
                   Make Admin
                 </button>

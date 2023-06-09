@@ -4,13 +4,13 @@ import useInstructorCart from "../../componenets/useInstructorCart";
 const Instructor = () => {
   const [instructors] = useInstructorCart();
   return (
-    <div className="bg-black py-32">
+    <div className="bg-gradient-to-r from-black to-[#06213d] py-32">
       <h1 className="text-white text-center text-3xl font-thin">
         Our All <span className="text-red-500 ">Instructors</span>
       </h1>{" "}
       <div className=" grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-white ">
         {instructors.map((instructor) => (
-          <div className="card shadow-xl">
+          <div key={instructor._id} className="card shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src={instructor.image}

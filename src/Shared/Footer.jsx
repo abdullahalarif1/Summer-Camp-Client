@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-removebg-preview.png";
-import Container from '../componenets/Container';
+
 
 const Footer = () => {
   return (
-   
-    <footer className="footer p-12 bg-black text-white  ">
+    <footer className="footer p-12 bg-gradient-to-r from-black to-[#051e37] text-white  ">
       <div>
         <Link to={"/"}>
           <img className="h-16" src={logo} alt="" />
@@ -20,9 +19,9 @@ const Footer = () => {
       </div>
 
       <div>
-        <span className="footer-title">Company</span>
+        <span className="footer-title">About</span>
         <Link to="/blog" className="link link-hover">
-          Blog
+          Instructor
         </Link>
         <Link
           to="https://www.facebook.com/shaehkhokkho.poth/"
@@ -31,7 +30,7 @@ const Footer = () => {
           Contact
         </Link>
         <Link to="/allToys" className="link link-hover">
-          Toys
+          Classes
         </Link>
         <a className="link link-hover">Press kit</a>
       </div>

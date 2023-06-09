@@ -72,7 +72,7 @@ const Header = () => {
           </ul>
         </div>
         <a className="">
-          <img className="h-16 " src={logo} alt="" />
+          <img className="h-16" src={logo} alt="" />
         </a>
       </div>
 
@@ -97,7 +97,7 @@ const Header = () => {
             </label>
           </>
         ) : (
-          <Link to="/login" className="btn btn-outline btn-primary">
+          <Link to="/login" className="btn btn-outline btn-error">
             Login
           </Link>
         )}
