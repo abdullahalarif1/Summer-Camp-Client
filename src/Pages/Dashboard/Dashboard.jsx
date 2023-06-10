@@ -23,7 +23,7 @@ const Dashboard = () => {
         <div className="drawer-content pb-[100vh] md:pb-0  bg-gradient-to-r from-black to-[#06213d]">
           <label
             htmlFor="my-drawer-2"
-            className="drawer-button  btn btn-error bg-red-300 btn-lg border-2 me-auto lg:hidden sticky top-0  mt-2 "
+            className="drawer-button  btn bg-black text-white  btn-lg border me-auto lg:hidden sticky top-0  mt-2 "
           >
             <AiOutlineMenuFold />
           </label>

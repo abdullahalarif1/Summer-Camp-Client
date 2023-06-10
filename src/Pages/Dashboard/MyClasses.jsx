@@ -27,7 +27,7 @@ const MyClasses = () => {
                   <td>{myClass.status}</td>
                   <td>
                     <small>
-                      {myClass.status === "denied" && myClass.className}
+                      {myClass.status === "denied" && myClass.feedback}
                     </small>{" "}
                   </td>
                 </tr>

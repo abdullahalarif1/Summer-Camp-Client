@@ -11,6 +11,8 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AddClass from "../Pages/Dashboard/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
+import Feedback from "../Pages/Dashboard/Feedback";
+import Classes from "../Pages/Classes/Classes";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,15 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructor></Instructor>,
+      },
+      {
+        path: "/classes",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Classes></Classes>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -61,8 +72,8 @@ const router = createBrowserRouter([
         element: <MyClasses></MyClasses>,
       },
       {
-        path: "feedback",
-        element: ,
+        path: "/dashboard/feedback",
+        element: <Feedback></Feedback>,
       },
     ],
   },
