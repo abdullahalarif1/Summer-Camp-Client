@@ -11,8 +11,10 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers";
 import AddClass from "../Pages/Dashboard/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses";
 import ManageClasses from "../Pages/Dashboard/ManageClasses";
-import Feedback from "../Pages/Dashboard/Feedback";
+
 import Classes from "../Pages/Classes/Classes";
+import MySelectedClass from "../Pages/Dashboard/MySelectedClass";
+import Payment from "../Pages/Dashboard/Payment";
 
 const router = createBrowserRouter([
   {
@@ -30,12 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/classes",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Classes></Classes>
-          </PrivateRoute>
-        ),
+        element: <Classes></Classes>,
       },
       {
         path: "/login",
@@ -72,8 +69,12 @@ const router = createBrowserRouter([
         element: <MyClasses></MyClasses>,
       },
       {
-        path: "/dashboard/feedback",
-        element: <Feedback></Feedback>,
+        path: "mySelectedClass",
+        element: <MySelectedClass></MySelectedClass>,
+      },
+      {
+        path: "payment/:id",
+        element: <Payment></Payment>,
       },
     ],
   },

@@ -4,8 +4,8 @@ import { Link, useRouteError } from "react-router-dom";
 const ErrorPage = () => {
   const { error, status } = useRouteError();
   return (
-    <section className="flex items-center h-screen py-20 bg-gray-100 text-gray-900">
-      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
+    <section className="flex items-center h-screen py-32 bg-gradient-to-r from-black to-[#06213d] text-white">
+      <div className="container flex flex-col items-center justify-center px-5  mx-auto my-8">
         <img
           className="h-96 rounded-md"
           src="https://images.unsplash.com/photo-1594322436404-5a0526db4d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8NDA0JTIwcGFnZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
@@ -20,7 +20,7 @@ const ErrorPage = () => {
           </p>
           <Link
             to="/"
-            className="px-8 py-3 text-white font-semibold rounded bg-blue-500 "
+            className="px-8 py-3 text-white font-semibold rounded  btn  btn-error"
           >
             Back to homepage
           </Link>

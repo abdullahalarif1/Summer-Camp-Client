@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SiGoogleclassroom } from "react-icons/si";
-import { AiOutlineMenuFold } from "react-icons/ai";
+import { AiOutlineMenuFold, AiOutlineSelect } from "react-icons/ai";
 import { BsBuildingAdd } from "react-icons/bs";
 import { MdClass } from "react-icons/md";
 import { FaWallet, FaUsers, FaHome, FaChalkboardTeacher } from "react-icons/fa";
@@ -66,10 +66,15 @@ const Dashboard = () => {
               <>
                 {" "}
                 <li>
-                  <NavLink>Sidebar Item 1</NavLink>
+                  <NavLink to="/dashboard/mySelectedClass">
+                    {" "}
+                    <AiOutlineSelect></AiOutlineSelect>My Selected Class
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink>Sidebar Item 2</NavLink>
+                  <NavLink to="/dashboard/myEnrolledClasses">
+                    <SiGoogleclassroom></SiGoogleclassroom> My Enrolled Classes
+                  </NavLink>
                 </li>
               </>
             )}

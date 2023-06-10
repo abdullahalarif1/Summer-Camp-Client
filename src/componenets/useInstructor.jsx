@@ -9,7 +9,7 @@ const useInstructor = () => {
     queryKey: ["isInstructor", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/students/adminInstructor/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/${user?.email}`
       );
       return res.data.instructor;
     },

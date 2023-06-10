@@ -25,7 +25,7 @@ const ManageClasses = () => {
   console.log(classes);
   return (
     <div>
-      <h2 className="text-4xl text-center font-thin ">
+      <h2 className="text-4xl text-center font-thin py-10 ">
         Manage <span className="text-red-500"> Classes</span>
       </h2>
 
