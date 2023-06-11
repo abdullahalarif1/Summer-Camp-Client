@@ -1,11 +1,13 @@
 import React from "react";
 import useInstructorCart from "../../componenets/useInstructorCart";
+import useClasses from "../../componenets/useClasses";
 
 const Instructor = () => {
   const [instructors] = useInstructorCart();
-  
+  const [classes] = useClasses();
+
   return (
-    <div className="bg-gradient-to-r from-black to-[#06213d] py-32">
+    <div className="py-32">
       <h1 className="text-white text-center text-3xl font-thin">
         Our All <span className="text-red-500 ">Instructors</span>
       </h1>{" "}

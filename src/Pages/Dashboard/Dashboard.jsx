@@ -1,4 +1,6 @@
-import React from "react";
+
+import anime from "animejs";
+import React, { useEffect, useRef } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { SiGoogleclassroom } from "react-icons/si";
 import { AiOutlineMenuFold, AiOutlineSelect } from "react-icons/ai";
@@ -15,9 +17,21 @@ const Dashboard = () => {
 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const element = elementRef.current;
+
+    anime({
+      targets: element,
+      rotate: "1turn",
+      backgroundColor: "#FFF",
+      duration: 2000,
+    });
+  }, []);
 
   return (
-    <div>
+    <div id="myDiv" ref={elementRef}>
       <div className="drawer lg:drawer-open text-white">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content pb-[100vh] md:pb-0  bg-gradient-to-r from-black to-[#06213d]">
@@ -78,7 +92,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/paymentHistory">
-                    <SiGoogleclassroom></SiGoogleclassroom> 
+                    <SiGoogleclassroom></SiGoogleclassroom>
                     Payment History
                   </NavLink>
                 </li>

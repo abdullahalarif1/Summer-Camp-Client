@@ -6,7 +6,7 @@ import Feature from './Feature';
 
 const Home = () => {
     return (
-      <div className="bg-gradient-to-r from-black to-[#06213d]">
+      <div className="">
         <Banner></Banner>
         <Instructors></Instructors>
         <ClassesHome></ClassesHome>

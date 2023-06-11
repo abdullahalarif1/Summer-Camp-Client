@@ -12,6 +12,7 @@ const Register = () => {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -52,6 +53,11 @@ const Register = () => {
         })
         .catch((error) => console.log(error.message));
     });
+  };
+
+  const passwordMatch = (value) => {
+    const { password, confirmPassword } = getValues();
+    return password === confirmPassword || "Passwords do not match";
   };
   return (
     <div className="hero min-h-screen text-white p-12 py-20 bg-black">
@@ -142,6 +148,31 @@ const Register = () => {
                 <small className="text-error pt-1">
                   password must have one uppercase, one lowercase, one number
                   and one special characters.
+                </small>
+              )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-white">Confirm Password</span>
+              </label>
+              <input
+                type="password"
+                {...register("confirmPassword", {
+                  required: true,
+                  validate: passwordMatch,
+                })}
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                className="input input-bordered bg-black"
+              />
+              {errors.confirmPassword?.type === "required" && (
+                <small className="text-error pt-1">
+                  Confirm Password field is required
+                </small>
+              )}
+              {errors.confirmPassword?.message && (
+                <small className="text-error pt-1">
+                  {errors.confirmPassword.message}
                 </small>
               )}
             </div>
