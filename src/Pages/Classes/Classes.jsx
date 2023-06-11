@@ -71,7 +71,7 @@ const Classes = () => {
         <div
           key={classItem._id}
           className={`card bg-[#06213d] text-white card-compact md:w-96 h-96  shadow-xl ${
-            classItem.availableSeats === 0 ? "bg-red-500" : ""
+            parseFloat(classItem.availableSeats) === 0 ? "bg-red-500" : ""
           }`}
         >
           <figure>
@@ -83,13 +83,19 @@ const Classes = () => {
             <p>Available Seats: {classItem.availableSeats}</p>
             <p>Price: ${classItem.price}</p>
             <div className="card-actions justify-end">
-              {classItem.availableSeats === 0 || isAdmin || isInstructor ? (
+              {parseFloat(classItem.availableSeats === 0) ||
+              isAdmin ||
+              isInstructor ? (
                 <button className="btn" disabled>
                   Select
                 </button>
               ) : (
                 <button
-                  className="btn btn-error btn-outline"
+                  className={` btn btn-error btn-outline ${
+                    parseFloat(classItem.availableSeats) === 0
+                      ? "bg-white "
+                      : ""
+                  }`}
                   onClick={() => handleSelect(classItem)}
                 >
                   Select

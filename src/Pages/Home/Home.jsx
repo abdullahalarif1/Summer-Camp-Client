@@ -1,12 +1,16 @@
 import React from 'react';
 import Banner from './Banner';
 import Instructors from './Instructors';
+import ClassesHome from './ClassesHome';
+import Feature from './Feature';
 
 const Home = () => {
     return (
       <div className="bg-gradient-to-r from-black to-[#06213d]">
         <Banner></Banner>
         <Instructors></Instructors>
+        <ClassesHome></ClassesHome>
+        <Feature></Feature>
       </div>
     );
 };

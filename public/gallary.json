@@ -1,0 +1,45 @@
+ [
+    {
+      "id": "1",
+      "title": "Portrait in Black and White",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/04/img-12.jpg",
+      "description": "A captivating black and white portrait that captures the subject's emotion.",
+      "category": "Portrait"
+    },
+    {
+      "id": "2",
+      "title": "Golden Hour Landscape",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/04/img-13.jpg",
+      "description": "A stunning landscape photograph taken during the golden hour, featuring warm hues and soft lighting.",
+      "category": "Landscape"
+    },
+    {
+      "id": "3",
+      "title": "Wildlife Close-Up",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/04/img-14.jpg",
+      "description": "A remarkable close-up shot of a wild animal showcasing intricate details and textures.",
+      "category": "Wildlife"
+    },
+    {
+      "id": "4",
+      "title": "Street Photography Moments",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/03/img-8.jpg",
+      "description": "A series of candid street photography shots capturing authentic moments of urban life.",
+      "category": "Street"
+    },
+    {
+      "id": "5",
+      "title": "Fashion Editorial",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/03/img-1.jpg",
+      "description": "A glamorous fashion photograph featuring a model and showcasing trendy attire.",
+      "category": "Fashion"
+    },
+    {
+      "id": "5",
+      "title": "Fashion Editorial",
+      "image": "https://redart.wpengine.com/wp-content/uploads/2016/03/img-5.jpg",
+      "description": "A glamorous fashion photograph featuring a model and showcasing trendy attire.",
+      "category": "Fashion"
+    }
+  ]
+
