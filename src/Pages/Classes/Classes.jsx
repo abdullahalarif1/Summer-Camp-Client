@@ -93,7 +93,7 @@ const Classes = () => {
                 <button
                   className={` btn btn-error btn-outline ${
                     parseFloat(classItem.availableSeats) === 0
-                      ? "bg-white "
+                      ? "bg-white btn btn-outline"
                       : ""
                   }`}
                   onClick={() => handleSelect(classItem)}

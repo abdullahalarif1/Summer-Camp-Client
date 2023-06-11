@@ -25,7 +25,7 @@ const MySelectedClass = () => {
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              //  window.location.reload();
+               window.location.reload();
               refetch();
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }

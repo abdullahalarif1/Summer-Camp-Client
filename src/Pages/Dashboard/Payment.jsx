@@ -16,7 +16,7 @@ const Payment = () => {
         Please <span className="text-red-500"> Pay </span>
       </h2>
       <Elements stripe={stripePromise}>
-        <CheckoutFrom price={parseFloat(cart.price)}></CheckoutFrom>
+        <CheckoutFrom cart={cart} price={parseFloat(cart.price)}></CheckoutFrom>
       </Elements>
     </div>
   );

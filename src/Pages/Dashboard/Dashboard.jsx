@@ -76,6 +76,12 @@ const Dashboard = () => {
                     <SiGoogleclassroom></SiGoogleclassroom> My Enrolled Classes
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/paymentHistory">
+                    <SiGoogleclassroom></SiGoogleclassroom> 
+                    Payment History
+                  </NavLink>
+                </li>
               </>
             )}
 

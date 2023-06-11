@@ -4,12 +4,15 @@ import useAxiosSecure from "../../componenets/useAxiosSecure";
 import useAuth from "../../componenets/useAuth";
 import axios from "axios";
 
-const CheckoutFrom = ({ price }) => {
+const CheckoutFrom = ({ price, cart }) => {
+  console.log(cart);
   const stripe = useStripe();
   const elements = useElements();
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [processing, setProcessing] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
   const { user } = useAuth();
 
   useEffect(() => {
@@ -44,8 +47,10 @@ const CheckoutFrom = ({ price }) => {
       setCardError(error.message);
     } else {
       setCardError("");
-    //   console.log("payment method", paymentMethod);
+      //   console.log("payment method", paymentMethod);
     }
+
+    setProcessing(true);
 
     //confirm payment
     const { paymentIntent, error: confirmError } =
@@ -64,9 +69,29 @@ const CheckoutFrom = ({ price }) => {
       setCardError(confirmError.message);
     } else {
       console.log("paymentIntent", paymentIntent);
-      if (paymentIntent.status === "succeeded") {
-        // save payment info db
-      }
+    }
+    setProcessing(false);
+    if (paymentIntent.status === "succeeded") {
+     
+      setTransactionId(paymentIntent.id);
+      const transactionId = paymentIntent.id;
+      // save payment
+      const payment = {
+        email: user?.email,
+        transactionId: transactionId,
+        price,
+        date: new Date(),
+        itemsName: cart.name,
+        cartItems: cart._id,
+        courseId: cart.courseId,
+        image: cart.image,
+        status: "succeeded",
+      };
+      axiosSecure.post("/payments", payment).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+        }
+      });
     }
   };
 
@@ -92,16 +117,24 @@ const CheckoutFrom = ({ price }) => {
         <button
           className="btn btn-outline mt-4 btn-sm btn-primary"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || processing}
         >
           Pay ${price}
         </button>
       </form>
-      {cardError && (
-        <p className="text-error">
-          <small>{cardError}</small>
-        </p>
-      )}
+      <div className="mt-4 ">
+        {cardError && (
+          <p className="text-error">
+            <small>{cardError}</small>
+          </p>
+        )}
+        {transactionId && (
+          <p className="text-success">
+            {" "}
+            Transaction complete : {transactionId}
+          </p>
+        )}
+      </div>
     </>
   );
 };

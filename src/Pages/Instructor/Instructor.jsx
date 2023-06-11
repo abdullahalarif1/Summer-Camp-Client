@@ -3,6 +3,7 @@ import useInstructorCart from "../../componenets/useInstructorCart";
 
 const Instructor = () => {
   const [instructors] = useInstructorCart();
+  
   return (
     <div className="bg-gradient-to-r from-black to-[#06213d] py-32">
       <h1 className="text-white text-center text-3xl font-thin">
