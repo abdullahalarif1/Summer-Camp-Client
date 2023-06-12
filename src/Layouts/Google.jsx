@@ -7,26 +7,24 @@ const Google = () => {
   const navigate = useNavigate();
   const { googleSignIn } = useAuth();
   const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+    googleSignIn().then((result) => {
+      const user = result.user;
+      console.log(user);
 
-        // data base save
-        const savedStudent = { name: user.displayName, email: user.email };
-        fetch(`${import.meta.env.VITE_BASE_URL}/students`, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(savedStudent),
-        })
-          .then((res) => res.json())
-          .then(() => {
-            navigate(from, { replace: true });
-          });
+      // data base save
+      const savedStudent = { name: user.displayName, email: user.email };
+      fetch(`https://summer-camp-server-gamma-bay.vercel.app/students`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(savedStudent),
       })
-     
+        .then((res) => res.json())
+        .then(() => {
+          navigate(from, { replace: true });
+        });
+    });
   };
   return (
     <>

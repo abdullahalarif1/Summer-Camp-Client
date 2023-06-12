@@ -17,6 +17,7 @@ import MySelectedClass from "../Pages/Dashboard/MySelectedClass";
 import Payment from "../Pages/Dashboard/Payment";
 import MyEnrolledClass from "../Pages/Dashboard/MyEnrolledClass";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import Feedback from "../Pages/Dashboard/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -83,11 +84,15 @@ const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>,
       },
       {
+        path: "feedback/:id",
+        element: <Feedback></Feedback>,
+      },
+      {
         path: "payment/:id",
         element: <Payment></Payment>,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:5000/carts/${params.id}`
+            `https://summer-camp-server-gamma-bay.vercel.app/carts/${params.id}`
           );
           const data = await response.json();
           return { cart: data };

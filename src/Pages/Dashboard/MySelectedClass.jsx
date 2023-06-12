@@ -18,14 +18,14 @@ const MySelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${import.meta.env.VITE_BASE_URL}/carts/${id}`, {
+        fetch(`https://summer-camp-server-gamma-bay.vercel.app/carts/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-               window.location.reload();
+              // window.location.reload();
               refetch();
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }

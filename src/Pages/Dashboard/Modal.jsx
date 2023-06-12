@@ -11,7 +11,7 @@ const Modal = ({ uniqueId }) => {
 
     // Send feedback to the backend
     await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/instructors/feedback/${uniqueId}`,
+      `https://summer-camp-server-gamma-bay.vercel.app/instructors/feedback/${uniqueId}`,
       {
         feedback: feedbackText,
       }

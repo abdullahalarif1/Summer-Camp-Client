@@ -1,4 +1,4 @@
-import React, { createContext,  useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -59,18 +59,17 @@ const AuthProvider = ({ children }) => {
       // get and set token
       if (loggedUser) {
         axios
-          .post(`${import.meta.env.VITE_BASE_URL}/jwt`, {
+          .post(`https://summer-camp-server-gamma-bay.vercel.app/jwt`, {
             email: loggedUser.email,
           })
           .then((data) => {
             console.log(data.data.token);
             localStorage.setItem("access-token", data.data.token);
-             setLoading(false);
+            setLoading(false);
           });
       } else {
         localStorage.removeItem("access-token");
       }
-     
     });
 
     return () => {

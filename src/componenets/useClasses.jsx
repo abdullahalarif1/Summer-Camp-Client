@@ -10,7 +10,7 @@ const useClasses = () => {
     queryKey: ["classesData"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/instructors`
+        `https://summer-camp-server-gamma-bay.vercel.app/instructors`
       );
       return res.data;
     },

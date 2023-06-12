@@ -9,7 +9,7 @@ const ManageUsers = () => {
   const { loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   //   const { data: students = [], refetch } = useQuery(["students"], async () => {
-  //     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students`);
+  //     const res = await axios.get(`https://summer-camp-server-gamma-bay.vercel.app/students`);
   //     return res.data;
   //   });
 
@@ -17,19 +17,18 @@ const ManageUsers = () => {
     enabled: !loading,
     queryKey: ["students"],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/students/`);
+      const res = await axios.get(
+        `https://summer-camp-server-gamma-bay.vercel.app/students/`
+      );
       return res.data;
     },
   });
 
-  
-
   const [isLoading, setIsLoading] = useState(false);
 
   const updateUserRole = async (userId, role) => {
-    setIsLoading(true);
     const res = await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/students/adminInstructor/${userId}`,
+      `https://summer-camp-server-gamma-bay.vercel.app/students/adminInstructor/${userId}`,
       { role }
     );
 
@@ -42,7 +41,7 @@ const ManageUsers = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      //   window.location.reload();
+      window.location.reload();
     }
   };
 

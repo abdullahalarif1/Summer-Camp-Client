@@ -14,7 +14,7 @@ const Classes = () => {
     queryKey: ["classes"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/instructors?text=approved`
+        `https://summer-camp-server-gamma-bay.vercel.app/instructors?text=approved`
       );
       return res.data;
     },
@@ -29,7 +29,8 @@ const Classes = () => {
         price: classItem.price,
         email: user.email,
       };
-      fetch(`${import.meta.env.VITE_BASE_URL}/carts`, {
+
+      fetch(`https://summer-camp-server-gamma-bay.vercel.app/carts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -63,6 +64,16 @@ const Classes = () => {
     // For now, we'll display a message if the user is not logged in
 
     console.log("Selected class:", classItem);
+
+    if (!user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please login",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
@@ -92,9 +103,7 @@ const Classes = () => {
               ) : (
                 <button
                   className={` btn btn-error btn-outline ${
-                    parseFloat(classItem.availableSeats) === 0
-                      ? 'hidden'
-                      : ""
+                    parseFloat(classItem.availableSeats) === 0 ? "hidden" : ""
                   }`}
                   onClick={() => handleSelect(classItem)}
                 >

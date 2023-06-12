@@ -13,7 +13,7 @@ const useCart = () => {
     queryKey: ["cart", user?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/carts?email=${user.email}`
+        `https://summer-camp-server-gamma-bay.vercel.app/carts?email=${user.email}`
       );
       return res.data;
     },

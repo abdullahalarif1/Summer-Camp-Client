@@ -1,15 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
+import axios from "axios";
 
 const useInstructor = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const { data: isInstructor, refetch, isLoading: isInstructorLoading } = useQuery({
+  const {
+    data: isInstructor,
+    refetch,
+    isLoading: isInstructorLoading,
+  } = useQuery({
     queryKey: ["isInstructor", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `${import.meta.env.VITE_BASE_URL}/${user?.email}`
+        `/students/adminInstructor/${user?.email}`
       );
       return res.data.instructor;
     },

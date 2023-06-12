@@ -2,7 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../componenets/useAxiosSecure";
 import useAuth from "../../componenets/useAuth";
-import axios from "axios";
+
 
 const CheckoutFrom = ({ price, cart }) => {
   console.log(cart);

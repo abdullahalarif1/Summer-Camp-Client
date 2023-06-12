@@ -26,28 +26,29 @@ function AddClass() {
     //TODO
     // reset();
 
-    fetch(`${import.meta.env.VITE_BASE_URL}/instructors`, {
+    fetch(`https://summer-camp-server-gamma-bay.vercel.app/instructors`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(newClass),
     })
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        if(data.insertedId){
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Class added successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Class added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
         }
-    })
+      });
 
-    // const res = axios.post(`${import.meta.env.VITE_BASE_URL}/instructors`, {
+    // const res = axios.post(`https://summer-camp-server-gamma-bay.vercel.app/instructors`, {
     //   newClass,
     // });
     // console.log(res.data);

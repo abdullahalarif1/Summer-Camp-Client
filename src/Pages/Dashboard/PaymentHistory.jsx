@@ -20,6 +20,7 @@ const PaymentHistory = () => {
                 <th>Email</th>
                 <th>Status</th>
                 <th>Transaction Id</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@ const PaymentHistory = () => {
                   <td>{enrolled.email}</td>
                   <td>{enrolled.status}</td>
                   <td>{enrolled.transactionId}</td>
+                  <td>{enrolled.date}</td>
                 </tr>
               ))}
             </tbody>
