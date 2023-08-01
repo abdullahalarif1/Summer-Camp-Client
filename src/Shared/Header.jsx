@@ -35,18 +35,23 @@ const Header = () => {
   const items = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link className="text-xs" to="/">
+          HOME
+        </Link>
       </li>
       <li>
-        <Link to="/instructors">Instructors</Link>
+        <Link className="text-xs" to="/instructors">
+          INSTRUCTORS
+        </Link>
       </li>
-      <li>
-        <Link to="/classes">Classes</Link>
-      </li>
+
       {/* {user && ( */}
       <>
         {user && (
           <>
+            <li>
+              <Link to="/classes">Classes</Link>
+            </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
@@ -56,9 +61,13 @@ const Header = () => {
 
       <li>
         {user ? (
-          <Link onClick={handleLogOut}>Logout</Link>
+          <Link className="text-xs" onClick={handleLogOut}>
+            LOGOUT
+          </Link>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link className="text-xs" to="/login">
+            LOGIN
+          </Link>
         )}
       </li>
     </>
@@ -102,7 +111,11 @@ const Header = () => {
       <div className="navbar-end md:pe-12">
         <label className="swap swap-rotate me-4">
           {/* this hidden checkbox controls the state */}
-          <input type="checkbox" onChange={handleToggle}/>
+          <input
+            type="checkbox"
+            onChange={handleToggle}
+            checked={theme === "light" ? false : true}
+          />
 
           {/* sun icon */}
           <svg

@@ -9,7 +9,7 @@ const ManageUsers = () => {
   const { loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   //   const { data: students = [], refetch } = useQuery(["students"], async () => {
-  //     const res = await axios.get(`http://localhost:5000/students`);
+  //     const res = await axios.get(`https://summer-camp-server-gamma-bay.vercel.app/students`);
   //     return res.data;
   //   });
 
@@ -17,7 +17,9 @@ const ManageUsers = () => {
     enabled: !loading,
     queryKey: ["students"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/students/`);
+      const res = await axios.get(
+        `https://summer-camp-server-gamma-bay.vercel.app/students/`
+      );
       return res.data;
     },
   });
@@ -26,7 +28,7 @@ const ManageUsers = () => {
 
   const updateUserRole = async (userId, role) => {
     const res = await axios.patch(
-      `http://localhost:5000/students/adminInstructor/${userId}`,
+      `https://summer-camp-server-gamma-bay.vercel.app/students/adminInstructor/${userId}`,
       { role }
     );
 

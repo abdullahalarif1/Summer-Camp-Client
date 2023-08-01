@@ -13,7 +13,7 @@ const Google = () => {
 
       // data base save
       const savedStudent = { name: user.displayName, email: user.email };
-      fetch(`http://localhost:5000/students`, {
+      fetch(`https://summer-camp-server-gamma-bay.vercel.app/students`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

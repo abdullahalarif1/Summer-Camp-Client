@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         element: <Payment></Payment>,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:5000/carts/${params.id}`
+            `https://summer-camp-server-gamma-bay.vercel.app/carts/${params.id}`
           );
           const data = await response.json();
           return { cart: data };

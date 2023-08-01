@@ -10,7 +10,7 @@ const ManageClasses = () => {
   const updateUserStatus = async (userId, status) => {
     setIsLoading(true);
     const res = await axiosSecure.patch(
-      `http://localhost:5000/instructors/approveDeny/${userId}`,
+      `https://summer-camp-server-gamma-bay.vercel.app/instructors/approveDeny/${userId}`,
       { status }
     );
 

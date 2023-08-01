@@ -26,7 +26,7 @@ const Register = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           const savedStudent = { name: data.name, email: data.email };
-          fetch(`http://localhost:5000/students`, {
+          fetch(`https://summer-camp-server-gamma-bay.vercel.app/students`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

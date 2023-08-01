@@ -14,9 +14,8 @@ const Classes = () => {
   const { data: classes = [], refetch } = useQuery({
     queryKey: ["classes"],
     queryFn: async () => {
-      
       const res = await axios.get(
-        `http://localhost:5000/instructors?text=approved`
+        `https://summer-camp-server-gamma-bay.vercel.app/instructors?text=approved`
       );
       return res.data;
     },
@@ -32,7 +31,7 @@ const Classes = () => {
         email: user.email,
       };
 
-      fetch(`http://localhost:5000/carts`, {
+      fetch(`https://summer-camp-server-gamma-bay.vercel.app/carts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

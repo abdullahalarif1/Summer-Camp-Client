@@ -9,7 +9,9 @@ const useClasses = () => {
   } = useQuery({
     queryKey: ["classesData"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/instructors`);
+      const res = await axios.get(
+        `https://summer-camp-server-gamma-bay.vercel.app/instructors`
+      );
       return res.data;
     },
   });

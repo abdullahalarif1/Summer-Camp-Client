@@ -13,7 +13,7 @@ const usePayment = () => {
     queryKey: ["payments", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/payments/${user?.email}`
+        `https://summer-camp-server-gamma-bay.vercel.app/payments/${user?.email}`
       );
       return res.data;
     },

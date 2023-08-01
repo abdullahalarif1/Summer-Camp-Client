@@ -5,7 +5,7 @@ const useInstructorCart = () => {
     const { isLoading, refetch, data: instructors = [] } = useQuery({
         queryKey: ['instructorData'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/instructor`)
+            const res = await axios.get(`https://summer-camp-server-gamma-bay.vercel.app/instructor`)
             return res.data
         }
     })

@@ -26,7 +26,7 @@ function AddClass() {
     //TODO
     // reset();
 
-    fetch(`http://localhost:5000/instructors`, {
+    fetch(`https://summer-camp-server-gamma-bay.vercel.app/instructors`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -48,7 +48,7 @@ function AddClass() {
         }
       });
 
-    // const res = axios.post(`http://localhost:5000/instructors`, {
+    // const res = axios.post(`https://summer-camp-server-gamma-bay.vercel.app/instructors`, {
     //   newClass,
     // });
     // console.log(res.data);
