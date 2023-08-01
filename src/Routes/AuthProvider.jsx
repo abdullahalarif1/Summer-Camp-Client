@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
       // get and set token
       if (loggedUser) {
         axios
-          .post(`https://summer-camp-server-gamma-bay.vercel.app/jwt`, {
+          .post(`http://localhost:5000/jwt`, {
             email: loggedUser.email,
           })
           .then((data) => {

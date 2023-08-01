@@ -9,7 +9,7 @@ const ManageUsers = () => {
   const { loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   //   const { data: students = [], refetch } = useQuery(["students"], async () => {
-  //     const res = await axios.get(`https://summer-camp-server-gamma-bay.vercel.app/students`);
+  //     const res = await axios.get(`http://localhost:5000/students`);
   //     return res.data;
   //   });
 
@@ -17,9 +17,7 @@ const ManageUsers = () => {
     enabled: !loading,
     queryKey: ["students"],
     queryFn: async () => {
-      const res = await axios.get(
-        `https://summer-camp-server-gamma-bay.vercel.app/students/`
-      );
+      const res = await axios.get(`http://localhost:5000/students/`);
       return res.data;
     },
   });
@@ -28,7 +26,7 @@ const ManageUsers = () => {
 
   const updateUserRole = async (userId, role) => {
     const res = await axios.patch(
-      `https://summer-camp-server-gamma-bay.vercel.app/students/adminInstructor/${userId}`,
+      `http://localhost:5000/students/adminInstructor/${userId}`,
       { role }
     );
 
@@ -41,12 +39,11 @@ const ManageUsers = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      window.location.reload();
     }
   };
 
   return (
-    <div className="overflow-x-auto p-20">
+    <div className="overflow-x-auto md:p-20 mx-5">
       <h2 className="text-4xl text-center pb-10 font-thin ">
         Manage <span className="text-red-500"> Classes</span>
       </h2>

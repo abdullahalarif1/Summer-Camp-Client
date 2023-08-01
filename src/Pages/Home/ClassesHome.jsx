@@ -1,29 +1,60 @@
 import React from "react";
 import useClasses from "../../componenets/useClasses";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import img from "../../assets/logo-removebg-preview-title.png";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const ClassesHome = () => {
   const [classes] = useClasses();
+
+  // Map the classes array outside the Swiper component
+  const classSlides = classes.slice(0, 6).map((classItem) => (
+    <SwiperSlide className="mb-12 border-2 border-red-500 border-b-0">
+      <img className="md:h-80 sm:h-60 h-36 p-1" src={classItem.classImage} alt="" />
+      <h3 className="text-xs  md:text-xl font-serif uppercase text-center -mt-9 md:-mt-12 text-white font-bold">
+        {classItem.className}
+      </h3>
+    </SwiperSlide>
+  ));
+
   return (
-    <>
-      <h1 className="text-white text-center text-3xl py-10 font-thin">
-        Popular <span className="text-red-500 ">Classes</span>
+    <div className="mt-20">
+      <img className="mx-auto w-10 animate-spin   " src={img} alt="" />
+      {/* <div className="border-b mx-auto w-24 "></div> */}
+      <h1 className="text-white uppercase text-center text-3xl md:text-5xl pb-2 font-thin">
+        <div className="flex justify-center py-1 opacity-80">
+          <div className="border-b w-32 border-2 md:w-48"></div>
+          <div className="border-b border-red-500 w-28 md:w-48 border-2"></div>
+        </div>
+        <span className=" ">Popular</span>{" "}
+        <span className="text-red-500 ">Classes</span>
       </h1>{" "}
-      <div className="grid md:grid-cols-3 gap-4   px-12">
-        {classes.slice(0, 6).map((classItem) => (
-          <div
-            key={classItem._id}
-            className="card  border-r-8 border-t-8  md:w-[350px] h-[300px] \ bg-gradient-to-r from-black to-[#06213d] m-5 border-red-400 text-white shadow-xl"
-          >
-            <div className="card-body">
-              <h2 className="card-title font-thin">{classItem.className}</h2>
-            </div>
-            <figure>
-              <img src={classItem.classImage} alt="Shoes" />
-            </figure>
-          </div>
-        ))}
-      </div>
-    </>
+      <p className="text-center pb-4 font-semibold italic text-xs sm:text-sm">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      </p>
+      <img
+        className="mx-auto mb-14"
+        src="https://redart.wpengine.com/wp-content/uploads/2016/03/title-line.png"
+        alt=""
+      />
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={20}
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        {/* Render the mapped class slides */}
+        {classSlides}
+      </Swiper>
+    </div>
   );
 };
 

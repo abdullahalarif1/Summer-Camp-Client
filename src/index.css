@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .drawer-side a.active {
-    color: rgb(224, 88, 88);
+  color: rgb(224, 88, 88);
 }
 .drawer-side a {
-   background-color: transparent;
+  background-color: transparent;
+}
+
+.carousel-root .carousel {
+  display: flex;
+  justify-content: center;
 }

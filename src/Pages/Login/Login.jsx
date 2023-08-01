@@ -7,12 +7,13 @@ import Swal from "sweetalert2";
 import Google from "../../Layouts/Google";
 
 const Login = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const { signIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
-  
+
   const {
     register,
     handleSubmit,
@@ -44,11 +45,14 @@ const Login = () => {
         reset();
         navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.log(error.message);
+      });
   };
 
   return (
-    <div className="hero min-h-screen text-white px-12 py-20 bg-black">
+    <div className="hero min-h-screen text-white md:px-12 py-20 bg-black">
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img
@@ -89,8 +93,14 @@ const Login = () => {
                 </div>
               </div>
             </div>
+            {errorMessage && (
+              <p className="text-red-500 ">
+                {" "}
+                <small>{errorMessage}</small>
+              </p>
+            )}
             <div className="form-control mt-6">
-              <button className="btn btn-outline btn-primary text-white">
+              <button className="btn btn-outline btn-error text-white">
                 Login
               </button>
             </div>
@@ -98,7 +108,7 @@ const Login = () => {
               New to Photogenic?{" "}
               <span>
                 <Link
-                  className=" text-indigo-400 hover:underline"
+                  className=" text-error hover:underline"
                   to="/register"
                 >
                   Please Sign-up

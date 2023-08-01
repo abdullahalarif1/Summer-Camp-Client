@@ -26,7 +26,7 @@ const Register = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           const savedStudent = { name: data.name, email: data.email };
-          fetch(`https://summer-camp-server-gamma-bay.vercel.app/students`, {
+          fetch(`http://localhost:5000/students`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -60,7 +60,7 @@ const Register = () => {
     return password === confirmPassword || "Passwords do not match";
   };
   return (
-    <div className="hero min-h-screen text-white p-12 py-20 bg-black">
+    <div className="hero min-h-screen text-white md:p-12 py-20 bg-black">
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <img
@@ -177,14 +177,14 @@ const Register = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-outline btn-primary text-white">
+              <button className="btn btn-outline btn-error text-white">
                 register
               </button>
             </div>
             <div className="mt-4 text-sm text-grey-600">
               Already have an account?{" "}
               <span>
-                <Link className=" text-indigo-400 hover:underline" to="/login">
+                <Link className=" text-error hover:underline" to="/login">
                   Please login
                 </Link>
               </span>

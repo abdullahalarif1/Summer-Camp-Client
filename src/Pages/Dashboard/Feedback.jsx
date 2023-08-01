@@ -12,12 +12,9 @@ const Feedback = ({ uniqueId }) => {
     e.preventDefault();
 
     // Send feedback to the backend
-    await axios.patch(
-      `https://summer-camp-server-gamma-bay.vercel.app/instructors/feedback/${id}`,
-      {
-        feedback: feedbackText,
-      }
-    );
+    await axios.patch(`http://localhost:5000/instructors/feedback/${id}`, {
+      feedback: feedbackText,
+    });
 
     // Clear the feedback text
     setFeedbackText("");

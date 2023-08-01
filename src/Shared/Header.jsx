@@ -9,7 +9,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "night"
   );
 
   const handleToggle = (e) => {
@@ -40,13 +40,13 @@ const Header = () => {
       <li>
         <Link to="/instructors">Instructors</Link>
       </li>
+      <li>
+        <Link to="/classes">Classes</Link>
+      </li>
       {/* {user && ( */}
       <>
         {user && (
           <>
-            <li>
-              <Link to="/classes">Classes</Link>
-            </li>
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>

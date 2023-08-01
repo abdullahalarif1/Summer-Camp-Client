@@ -17,21 +17,21 @@ const Dashboard = () => {
 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  const elementRef = useRef(null);
+  // const elementRef = useRef(null);
 
-  useEffect(() => {
-    const element = elementRef.current;
+  // useEffect(() => {
+  //   const element = elementRef.current;
 
-    anime({
-      targets: element,
-      rotate: "1turn",
-      backgroundColor: "#FFF",
-      duration: 2000,
-    });
-  }, []);
+  //   anime({
+  //     targets: element,
+  //     rotate: "1turn",
+  //     backgroundColor: "#FFF",
+  //     duration: 2000,
+  //   });
+  // }, []);
 
   return (
-    <div id="myDiv" ref={elementRef}>
+    <div id="myDiv" >
       <div className="drawer lg:drawer-open text-white">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content pb-[100vh] md:pb-0  bg-gradient-to-r from-black to-[#06213d]">

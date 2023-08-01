@@ -10,7 +10,7 @@ const ManageClasses = () => {
   const updateUserStatus = async (userId, status) => {
     setIsLoading(true);
     const res = await axiosSecure.patch(
-      `https://summer-camp-server-gamma-bay.vercel.app/instructors/approveDeny/${userId}`,
+      `http://localhost:5000/instructors/approveDeny/${userId}`,
       { status }
     );
 
@@ -23,15 +23,18 @@ const ManageClasses = () => {
   console.log(classes);
   return (
     <div>
-      <h2 className="text-4xl text-center font-thin py-5">
+      <h2 className="text-4xl text-center font-thin py-20">
         Manage <span className="text-red-500"> Classes</span>
       </h2>
 
       {classes.map((myClass) => (
-        <div key={myClass._id} className="card m-6  bg-[#06213d] shadow-xl">
+        <div
+          key={myClass._id}
+          className="card lg:card-side  m-3 md:m-6  bg-[#06213d] shadow-xl"
+        >
           <figure>
             <img
-              className="w-[300px] p-4 rounded-2xl my-4 border"
+              className="w-full h-80 md:w-96 md:h-72 p-2 mx-4 rounded-2xl my-4 border"
               src={myClass.classImage}
               alt="Shoes"
             />
@@ -46,7 +49,7 @@ const ManageClasses = () => {
             <p>Available Seats: {myClass.availableSeats}</p>
             <p>Price: ${myClass.price}</p>
             <p>Status: {myClass.status}</p>
-            <div className="card-actions justify-end">
+            <div className="card-actions md:justify-end pt-4 md:pt-p0">
               <button
                 onClick={() => updateUserStatus(myClass._id, "approved")}
                 disabled={

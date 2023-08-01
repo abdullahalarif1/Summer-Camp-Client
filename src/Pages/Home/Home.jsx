@@ -3,14 +3,17 @@ import Banner from './Banner';
 import Instructors from './Instructors';
 import ClassesHome from './ClassesHome';
 import Feature from './Feature';
+import About from './About';
+
 
 const Home = () => {
     return (
-      <div className="">
+      <div>
         <Banner></Banner>
+        <Feature></Feature>
         <Instructors></Instructors>
         <ClassesHome></ClassesHome>
-        <Feature></Feature>
+        <About></About>
       </div>
     );
 };
