@@ -2,11 +2,12 @@ import React from "react";
 import useInstructorCart from "../../componenets/useInstructorCart";
 import useClasses from "../../componenets/useClasses";
 import img from "../../assets/logo-removebg-preview-title.png";
+import useTitle from "../../Shared/useTitle";
 
 const Instructor = () => {
   const [instructors] = useInstructorCart();
   const [classes] = useClasses();
-
+  useTitle("Instructor");
   return (
     <div className="py-32">
       <img className="mx-auto w-10 animate-spin   " src={img} alt="" />

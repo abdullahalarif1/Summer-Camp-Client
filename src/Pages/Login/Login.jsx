@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import Swal from "sweetalert2";
 import Google from "../../Layouts/Google";
+import useTitle from "../../Shared/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const [errorMessage, setErrorMessage] = useState("");
   const { signIn } = useAuth();
   const location = useLocation();
@@ -107,10 +109,7 @@ const Login = () => {
             <div className="mt-4 text-sm text-grey-600">
               New to Photogenic?{" "}
               <span>
-                <Link
-                  className=" text-error hover:underline"
-                  to="/register"
-                >
+                <Link className=" text-error hover:underline" to="/register">
                   Please Sign-up
                 </Link>
               </span>

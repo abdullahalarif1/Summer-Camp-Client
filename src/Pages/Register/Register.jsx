@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../componenets/useAuth";
 import Swal from "sweetalert2";
 import Google from "../../Layouts/Google";
+import useTitle from "../../Shared/useTitle";
 
 const Register = () => {
+   useTitle("Sign Up");
   const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
   const {

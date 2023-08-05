@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo-removebg-preview.png";
 import useAuth from "../componenets/useAuth";
+import IsActive from "./isActive";
 
 const Header = () => {
   const { user, logOut } = useAuth();
@@ -35,14 +36,14 @@ const Header = () => {
   const items = (
     <>
       <li>
-        <Link className="text-xs" to="/">
+        <IsActive className="text-xs" to="/">
           HOME
-        </Link>
+        </IsActive>
       </li>
       <li>
-        <Link className="text-xs" to="/instructors">
+        <IsActive className="text-xs" to="/instructors">
           INSTRUCTORS
-        </Link>
+        </IsActive>
       </li>
 
       {/* {user && ( */}
@@ -50,10 +51,14 @@ const Header = () => {
         {user && (
           <>
             <li>
-              <Link to="/classes">Classes</Link>
+              <IsActive className="text-xs" to="/classes">
+                CLASSES
+              </IsActive>
             </li>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <IsActive  to="/dashboard">
+                DASHBOARD
+              </IsActive>
             </li>
           </>
         )}
@@ -65,9 +70,9 @@ const Header = () => {
             LOGOUT
           </Link>
         ) : (
-          <Link className="text-xs" to="/login">
+          <IsActive className="text-xs" to="/login">
             LOGIN
-          </Link>
+          </IsActive>
         )}
       </li>
     </>

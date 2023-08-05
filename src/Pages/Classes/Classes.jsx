@@ -6,8 +6,10 @@ import useInstructor from "../../componenets/useInstructor";
 import useAuth from "../../componenets/useAuth";
 import Swal from "sweetalert2";
 import img from "../../assets/logo-removebg-preview-title.png";
+import useTitle from "../../Shared/useTitle";
 
 const Classes = () => {
+   useTitle("Classes");
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();

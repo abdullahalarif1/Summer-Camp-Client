@@ -9,6 +9,7 @@ import { MdClass } from "react-icons/md";
 import { FaWallet, FaUsers, FaHome, FaChalkboardTeacher } from "react-icons/fa";
 import useAdmin from "../../componenets/useAdminInstructor";
 import useInstructor from "../../componenets/useInstructor";
+import useTitle from "../../Shared/useTitle";
 
 const Dashboard = () => {
   // TODO
@@ -19,16 +20,7 @@ const Dashboard = () => {
   const [isInstructor] = useInstructor();
   // const elementRef = useRef(null);
 
-  // useEffect(() => {
-  //   const element = elementRef.current;
-
-  //   anime({
-  //     targets: element,
-  //     rotate: "1turn",
-  //     backgroundColor: "#FFF",
-  //     duration: 2000,
-  //   });
-  // }, []);
+   useTitle("Dashboard");
 
   return (
     <div id="myDiv" >

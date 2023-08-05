@@ -4,9 +4,11 @@ import Instructors from './Instructors';
 import ClassesHome from './ClassesHome';
 import Feature from './Feature';
 import About from './About';
+import useTitle from '../../Shared/useTitle';
 
 
 const Home = () => {
+  useTitle('Home')
     return (
       <div>
         <Banner></Banner>
